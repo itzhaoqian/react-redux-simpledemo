@@ -2,8 +2,23 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+最外层被<Provider>嵌套，传递store值为reducer集合；
+`export default connect(
+  mapStateToProps,
+  { addToCart }
+)(ProductsContainer)`
+conenct接受4个参数，分别是mapStateToProps，mapDispatchToProps，mergeProps，options，是连接action和reducter的；
+多层级嵌套组件数据共享是通过props来传递获取的，只是把动态变动的值和触发值改变的事件都提取出来，统一管理
 
+`
+// state.posts为reducer返回的值 reducer/index目录下
+// mapStateToProps把posts绑定到属性当中
+const mapStateToProps = (state, ownProps) => {
+  return {
+    userName: state.posts.newData
+  }
+}
+`
 ### `npm start`
 
 Runs the app in the development mode.<br>
